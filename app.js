@@ -10,19 +10,21 @@ const port = 3000;
 const path = require('path');
 const ejs = require('ejs');
 
-app.set('view engine', 'ejs');
-
 app.get('/', function(req, res) {
     res.render("homepage.ejs");
 });
 
 app.get("/game/:gameTitle", function(req, res) {
     const title = req.params.gameTitle;
+    const creator = req.params.gameCreator;
 
     res.render("game.ejs"), {
-        gameTitle: title
+        gameTitle: title,
+        gameCreator: CREATOR
     };
 });
+
+app.set('view engine', 'ejs');
 
 app.listen(port, function() {
     console.log("Website is now online");
