@@ -6,19 +6,24 @@
 
 const express = require('express');
 const appp = express();
+const port = 3000;
+const path = require('path');
+const ejs = require('ejs');
 
-let ejs = require('ejs');
+app.set('view engine', 'ejs');
 
-appp.get('/', function(req, res) {
+app.get('/', function(req, res) {
     res.render("homepage.ejs");
-})
+});
 
-appp.get("/game", function(req, res) {
-    res.render("game.ejs");
-})
+app.get("/game/:gameTitle", function(req, res) {
+    const title = req.params.gameTitle;
 
-appp.set('view engine', 'ejs');
+    res.render("game.ejs"), {
+        gameTitle: title
+    };
+});
 
-appp.listen("3000", function() {
+app.listen(port, function() {
     console.log("Website is now online");
-})
+});
