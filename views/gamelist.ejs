@@ -4,13 +4,13 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Homepage</title>
-
-    <link rel="stylesheet" href="style.css">
+    <title>Game List</title>
 </head>
 <body>
-    <h1>Gaming Website</h1>
-    <h3>Welcome to the website</h3>
-    
+    <h1>List of Games</h1>
+    <% for(i = 0; i < gameList.length; i++) { %>
+        <h4> Game: <%= gameList[i].title %> </h4>
+        <h5> Creator: <%= gameList[i].creator %> </h5>
+    <% } %>
 </body>
 </html>

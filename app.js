@@ -5,7 +5,7 @@
 //use res.send to send "Welcome"
 
 const express = require('express');
-const appp = express();
+const app = express();
 const port = 3000;
 const path = require('path');
 const ejs = require('ejs');
@@ -20,8 +20,21 @@ app.get("/game/:gameTitle", function(req, res) {
 
     res.render("game.ejs"), {
         gameTitle: title,
-        gameCreator: CREATOR
+        gameCreator: creator
     };
+});
+
+app.get("/gamelist", function(req, res) {
+    const games = [
+        {title: 'Fortnite', creator: 'Epic Games'},
+        {title: '', creator: 'Splash Damage'},
+        {title: '', creator: 'EA'},
+        {title: '', creator: 'EA'}
+    ]
+
+    res.render("gamelist.ejs", {
+        gameList: games
+    });
 });
 
 app.set('view engine', 'ejs');
